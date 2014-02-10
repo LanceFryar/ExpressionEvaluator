@@ -6,18 +6,26 @@ import org.junit.Test;
 public class ExpressionEvaluatorTest {
     
     @Test
-    public void test() {
-        ExpressionEvaluator expressionEvaluator = new ExpressionEvaluator();
-        Assert.assertEquals(7, expressionEvaluator.evaluateExpression("1+2*3"));
+    public void constantExpressionTest() {
+        Expression expression = new Expression(1);
+        Assert.assertEquals(1, expression.calculate());
     }
     
-    public class ExpressionEvaluator {
+    @Test
+    public void otherConstantExpressionTest() {
+        Expression expression = new Expression(2);
+        Assert.assertEquals(2, expression.calculate());
+    }
 
-        public ExpressionEvaluator() {
+    public class Expression {
+        private int value;
+        
+        public Expression(int value) {
+            this.value = value;
         }
         
-        public int evaluateExpression(String expression) {
-            return 7;
+        public int calculate() {
+            return value;
         }
     }
 }
