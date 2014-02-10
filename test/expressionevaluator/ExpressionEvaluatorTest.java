@@ -20,37 +20,4 @@ public class ExpressionEvaluatorTest {
         BinaryOperation binaryOperation = new BinaryOperation(new Constant(2), new Constant(3));
         Assert.assertEquals(5, binaryOperation.calculate());
     }
-
-    public interface Expression {
-
-        public int calculate();
-    }
-
-    public class Constant implements Expression {
-        private final int value;
-
-        public Constant(int value) {
-            this.value = value;
-        }
-
-        @Override
-        public int calculate() {
-            return value;
-        }
-
-    }
-
-    public class BinaryOperation implements Expression {
-        private final Expression rightExpression, leftExpression;
-
-        public BinaryOperation(Expression leftExpression, Expression rightExpression) {
-            this.rightExpression = rightExpression;
-            this.leftExpression = leftExpression;
-        }
-
-        @Override
-        public int calculate() {
-            return leftExpression.calculate() + rightExpression.calculate();
-        }
-    }
 }
