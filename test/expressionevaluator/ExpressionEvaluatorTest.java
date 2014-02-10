@@ -10,7 +10,7 @@ public class ExpressionEvaluatorTest {
         ExpressionEvaluator expressionEvaluator = new ExpressionEvaluator();
         Assert.assertEquals(7, expressionEvaluator.evaluateExpression("1+2*3"));
     }
-
+    
     public class ExpressionEvaluator {
 
         public ExpressionEvaluator() {
