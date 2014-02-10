@@ -16,8 +16,16 @@ public class ExpressionEvaluatorTest {
     }
 
     @Test
-    public void singleOperandExpressionTest() {
-        BinaryOperation binaryOperation = new BinaryOperation(new Constant(2), new Constant(3));
-        Assert.assertEquals(5, binaryOperation.calculate());
+    public void singleSubstractExpressionTest() {
+        SubstractOperation substractOperation = new SubstractOperation(new Constant(3), new Constant(1));
+        Assert.assertEquals(2, substractOperation.calculate());
     }
+    
+    @Test
+    public void singleDivisionExpressionTest(){
+        DivisionOperation divisionOperation = new DivisionOperation(new Constant(4), new Constant(2));
+        Assert.assertEquals(2, divisionOperation.calculate());
+    }
+    
+    
 }
