@@ -34,7 +34,7 @@ public class ExpressionEvaluatorTest {
             this.isOperator = false;
         }
 
-        public Expression(String operand, Expression rightExpression, Expression leftExpression) {
+        public Expression(String operand, Expression leftExpression, Expression rightExpression) {
             this.value = operand;
             this.isOperator = true;
             this.rightExpression = rightExpression;
@@ -43,7 +43,7 @@ public class ExpressionEvaluatorTest {
 
         public int calculate() {
             if (isOperator) {
-                return rightExpression.calculate() +  leftExpression.calculate();
+                return leftExpression.calculate() +  rightExpression.calculate();
             } 
             else return Integer.valueOf(value);
         }
