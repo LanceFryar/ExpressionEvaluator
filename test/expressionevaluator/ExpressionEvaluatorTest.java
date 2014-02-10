@@ -7,45 +7,50 @@ public class ExpressionEvaluatorTest {
 
     @Test
     public void constantExpressionTest() {
-        Expression expression = new Expression(1);
-        Assert.assertEquals(1, expression.calculate());
+        Assert.assertEquals(1, new Constant(1).calculate());
     }
 
     @Test
     public void otherConstantExpressionTest() {
-        Expression expression = new Expression(2);
-        Assert.assertEquals(2, expression.calculate());
+        Assert.assertEquals(2, new Constant(2).calculate());
     }
 
     @Test
     public void singleOperandExpressionTest() {
-        Expression expression = new Expression("+", new Expression(2), new Expression(3));
-        Assert.assertEquals(5, expression.calculate());
+        BinaryOperation binaryOperation = new BinaryOperation("+", new Constant(2), new Constant(3));
+        Assert.assertEquals(5, binaryOperation.calculate());
     }
 
-    public class Expression {
+    public interface Expression {
 
-        private String value;
-        private boolean isOperator;
-        private Expression rightExpression, leftExpression;
+        public int calculate();
+    }
 
-        public Expression(int value) {
-            this.value = String.valueOf(value);
-            this.isOperator = false;
+    public class Constant implements Expression {
+        private final int value;
+
+        public Constant(int value) {
+            this.value = value;
         }
 
-        public Expression(String operand, Expression leftExpression, Expression rightExpression) {
-            this.value = operand;
-            this.isOperator = true;
+        @Override
+        public int calculate() {
+            return value;
+        }
+
+    }
+
+    public class BinaryOperation implements Expression {
+        private final Expression rightExpression, leftExpression;
+
+        public BinaryOperation(String operand, Expression leftExpression, Expression rightExpression) {
             this.rightExpression = rightExpression;
             this.leftExpression = leftExpression;
         }
 
+        @Override
         public int calculate() {
-            if (isOperator) {
-                return leftExpression.calculate() +  rightExpression.calculate();
-            } 
-            else return Integer.valueOf(value);
+            return leftExpression.calculate() + rightExpression.calculate();
         }
     }
 }
