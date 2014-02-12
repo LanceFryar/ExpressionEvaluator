@@ -1,8 +1,8 @@
 package expressionevaluator;
 
-public class PlusOperation extends BinaryOperation{
+public class AddOperation extends BinaryOperation{
 
-    public PlusOperation(Expression leftExpression, Expression rightExpression) {
+    public AddOperation(Expression leftExpression, Expression rightExpression) {
         super(leftExpression, rightExpression);
     }
 
