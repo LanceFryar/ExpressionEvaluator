@@ -30,7 +30,7 @@ public class ExpressionEvaluatorTest {
     @Test
     public void singleMultiplicationExpressionTest() {
         MultiplicationOperation multiplicationOperation = new MultiplicationOperation(new Constant(4), new Constant(2));
-        Assert.assertEquals(2, multiplicationOperation.calculate());
+        Assert.assertEquals(8, multiplicationOperation.calculate());
     }
     
     
