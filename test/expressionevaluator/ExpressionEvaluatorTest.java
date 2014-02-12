@@ -27,7 +27,11 @@ public class ExpressionEvaluatorTest {
         Assert.assertEquals(2, divisionOperation.calculate());
     }
     
-    
+    @Test
+    public void singleMultiplicationExpressionTest() {
+        MultiplicationOperation multiplicationOperation = new MultiplicationOperation(new Constant(4), new Constant(2));
+        Assert.assertEquals(2, multiplicationOperation.calculate());
+    }
     
     
 }
