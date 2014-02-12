@@ -8,6 +8,6 @@ public class PlusOperation extends BinaryOperation{
 
     @Override
     public int calculate() {
-        return 0;
+        return leftExpression.calculate() + rightExpression.calculate();
     }
 }
