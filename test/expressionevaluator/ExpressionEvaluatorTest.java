@@ -33,5 +33,11 @@ public class ExpressionEvaluatorTest {
         Assert.assertEquals(8, multiplicationOperation.calculate());
     }
     
+    @Test
+    public void singlePlusExpressionTest() {
+        PlusOperation plusOperation = new PlusOperation(new Constant(4), new Constant(2));
+        Assert.assertEquals(6, plusOperation.calculate());
+    }
+    
     
 }
