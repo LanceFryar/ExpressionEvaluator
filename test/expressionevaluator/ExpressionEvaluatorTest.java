@@ -39,5 +39,10 @@ public class ExpressionEvaluatorTest {
         Assert.assertEquals(6, addOperation.calculate());
     }
     
+    @Test
+    public void singleAddExpressionWithOneDoubleTest() {
+        AddOperation addOperation = new AddOperation(new Constant(4), new Constant(2.5));
+        Assert.assertEquals(6.5, addOperation.calculate(), 0);
+    }
     
 }
