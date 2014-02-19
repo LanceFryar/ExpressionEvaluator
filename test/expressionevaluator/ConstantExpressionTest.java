@@ -6,12 +6,12 @@ import org.junit.Test;
 public class ConstantExpressionTest {
 
     @Test
-    public void constantExpressionTest() {
-        Assert.assertEquals(1, new Constant(1).calculate());
+    public void integerConstantExpressionTest() {
+        Assert.assertEquals(1, (int) new Constant<>(1).calculate());
     }
-
+    
     @Test
-    public void otherConstantExpressionTest() {
-        Assert.assertEquals(2, new Constant(2).calculate());
-    }    
+    public void doubleContantTest(){
+        Assert.assertEquals(0.2, new Constant<>(0.2).calculate(), 0.01);
+    }
 }
