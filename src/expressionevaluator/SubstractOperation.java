@@ -11,7 +11,11 @@ public class SubstractOperation extends BinaryOperation{
 
     @Override
     public Object calculate() {
-        return leftExpression.calculate() - rightExpression.calculate();
+        return getOperator().evaluate(leftExpression.calculate(), rightExpression.calculate());
+    }
+
+    private BinaryOperator getOperator() {
+        return new BinaryOperatorFactory().buildSubstractOperator(leftExpression.calculate(), rightExpression.calculate());
     }
     
     

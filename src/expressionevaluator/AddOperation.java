@@ -8,10 +8,10 @@ public class AddOperation extends BinaryOperation{
 
     @Override
     public Object calculate() {
-        return getOperator(leftExpression.calculate(), leftExpression.calculate()).evaluate();
+        return getOperator().evaluate(leftExpression.calculate(), rightExpression.calculate());
     }
 
-    private BinaryOperator getOperator(Object leftValue, Object rightValue) {
-        return new BinaryOperatorFactory().buildAdditionOperator(leftValue, rightValue);
+    private BinaryOperator getOperator() {
+        return new BinaryOperatorFactory().buildAdditionOperator(leftExpression.calculate(), rightExpression.calculate());
     }
 }

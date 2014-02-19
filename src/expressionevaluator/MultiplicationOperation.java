@@ -6,8 +6,12 @@ public class MultiplicationOperation extends BinaryOperation{
         super(leftExpression, rightExpression);
     }
     
-    @Override
+   @Override
     public Object calculate() {
-        return leftExpression.calculate() * rightExpression.calculate();
+        return getOperator().evaluate(leftExpression.calculate(), rightExpression.calculate());
+    }
+
+    private BinaryOperator getOperator() {
+        return new BinaryOperatorFactory().buildMultiplictionOperator(leftExpression.calculate(), rightExpression.calculate());
     }
 }

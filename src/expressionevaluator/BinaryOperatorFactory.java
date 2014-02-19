@@ -12,6 +12,7 @@ public class BinaryOperatorFactory {
     }
 
     private void initBuilders() {
+        
         builders.put("IntegerIntegerAdd", new BinaryOperator() {
 
             @Override
@@ -41,15 +42,118 @@ public class BinaryOperatorFactory {
             }
         });
         
+        builders.put("IntegerIntegerSubstract", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Integer) left - (Integer) right;
+            }
+        });
+        builders.put("DoubleIntegerSubstract", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Double) left - (Integer) right;
+            }
+        });
+        builders.put("IntegerDoubleSubstract", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Integer) left - (Double) right;
+            }
+        });
+        builders.put("DoubleDoubleSubstract", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Double) left - (Double) right;
+            }
+        });
+        
+        builders.put("IntegerIntegerDivision", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Integer) left / (Integer) right;
+            }
+        });
+        builders.put("DoubleIntegerDivision", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Double) left / (Integer) right;
+            }
+        });
+        builders.put("IntegerDoubleDivision", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Integer) left / (Double) right;
+            }
+        });
+        builders.put("DoubleDoubleDivision", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Double) left / (Double) right;
+            }
+        });
+        
+        builders.put("IntegerIntegerMultiplication", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Integer) left * (Integer) right;
+            }
+        });
+        builders.put("DoubleIntegerMultiplication", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Double) left * (Integer) right;
+            }
+        });
+        builders.put("IntegerDoubleMultiplication", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Integer) left * (Double) right;
+            }
+        });
+        builders.put("DoubleDoubleMultiplication", new BinaryOperator() {
+
+            @Override
+            public Object evaluate(Object left, Object right) {
+                return (Double) left * (Double) right;
+            }
+        });
+        
+        
+        
     }
 
     public BinaryOperator buildAdditionOperator(Object leftValue, Object rightValue) {
-        return builders.get(getSignature(leftValue, rightValue));
+        return builders.get(getSignature(leftValue, rightValue) + "Add");
+    }
+    
+    public BinaryOperator buildSubstractOperator(Object leftValue, Object rightValue) {
+        return builders.get(getSignature(leftValue, rightValue) + "Substract");
+    }
+    
+    public BinaryOperator buildMultiplictionOperator(Object leftValue, Object rightValue) {
+        return builders.get(getSignature(leftValue, rightValue) + "Multiplication");
+    }
+    
+    public BinaryOperator buildDivisionOperator(Object leftValue, Object rightValue) {
+        return builders.get(getSignature(leftValue, rightValue) + "Division");
     }
 
     private String getSignature(Object leftValue, Object rightValue) {
         return leftValue.getClass().getSimpleName() 
-                + rightValue.getClass().getSimpleName() + "Add";
+                + rightValue.getClass().getSimpleName();
     }
+    
+    
 
 }

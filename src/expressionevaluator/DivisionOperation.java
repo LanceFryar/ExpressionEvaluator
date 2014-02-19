@@ -12,7 +12,11 @@ public class DivisionOperation extends BinaryOperation{
 
     @Override
     public Object calculate() {
-        return leftExpression.calculate() / rightExpression.calculate();
+        return getOperator().evaluate(leftExpression.calculate(), rightExpression.calculate());
+    }
+
+    private BinaryOperator getOperator() {
+        return new BinaryOperatorFactory().buildDivisionOperator(leftExpression.calculate(), rightExpression.calculate());
     }
     
 }
