@@ -1,4 +1,8 @@
-package expressionevaluator;
+package expressionevaluator.operations;
+
+import expressionevaluator.BinaryOperator;
+import expressionevaluator.BinaryOperatorFactory;
+import expressionevaluator.Expression;
 
 /**
  *

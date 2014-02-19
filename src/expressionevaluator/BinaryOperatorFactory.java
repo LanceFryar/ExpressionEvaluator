@@ -4,15 +4,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BinaryOperatorFactory {
-    private Map<String, BinaryOperator> builders;
+    private final Map<String, BinaryOperator> builders;
     
     public BinaryOperatorFactory() {
         builders = new HashMap<>();
         initBuilders();
     }
 
-    private void initBuilders() {
-        
+    private void initBuilders() {  
+        initAdditionOperators();
+        initSubstractOperators();
+        initDivisionOperators();
+        initMultiplicationOperators();
+    }
+    
+    private void initAdditionOperators(){
         builders.put("IntegerIntegerAdd", new BinaryOperator() {
 
             @Override
@@ -41,14 +47,16 @@ public class BinaryOperatorFactory {
                 return (Double) left + (Double) right;
             }
         });
-        
+    }
+    
+    private void initSubstractOperators() {
         builders.put("IntegerIntegerSubstract", new BinaryOperator() {
 
             @Override
             public Object evaluate(Object left, Object right) {
                 return (Integer) left - (Integer) right;
             }
-        });
+        });        
         builders.put("DoubleIntegerSubstract", new BinaryOperator() {
 
             @Override
@@ -70,7 +78,9 @@ public class BinaryOperatorFactory {
                 return (Double) left - (Double) right;
             }
         });
-        
+    }
+
+    private void initDivisionOperators() {
         builders.put("IntegerIntegerDivision", new BinaryOperator() {
 
             @Override
@@ -99,7 +109,9 @@ public class BinaryOperatorFactory {
                 return (Double) left / (Double) right;
             }
         });
-        
+    }
+
+    private void initMultiplicationOperators() {
         builders.put("IntegerIntegerMultiplication", new BinaryOperator() {
 
             @Override
@@ -128,11 +140,8 @@ public class BinaryOperatorFactory {
                 return (Double) left * (Double) right;
             }
         });
-        
-        
-        
     }
-
+    
     public BinaryOperator buildAdditionOperator(Object leftValue, Object rightValue) {
         return builders.get(getSignature(leftValue, rightValue) + "Add");
     }
@@ -153,6 +162,8 @@ public class BinaryOperatorFactory {
         return leftValue.getClass().getSimpleName() 
                 + rightValue.getClass().getSimpleName();
     }
+
+
     
     
 

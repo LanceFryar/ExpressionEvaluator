@@ -1,5 +1,6 @@
 package expressionevaluator;
 
+import expressionevaluator.operations.AddOperation;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,11 +1,13 @@
-package expressionevaluator;
+package expressionevaluator.operations;
 
-import java.awt.Event;
+import expressionevaluator.BinaryOperator;
+import expressionevaluator.BinaryOperatorFactory;
+import expressionevaluator.Expression;
 
 
 public class SubstractOperation extends BinaryOperation{
 
-    SubstractOperation(Expression leftExpression, Expression rightExpression) {
+    public SubstractOperation(Expression leftExpression, Expression rightExpression) {
         super(leftExpression, rightExpression);
     }
 

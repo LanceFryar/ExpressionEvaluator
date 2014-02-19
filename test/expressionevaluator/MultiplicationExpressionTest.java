@@ -6,6 +6,7 @@
 
 package expressionevaluator;
 
+import expressionevaluator.operations.MultiplicationOperation;
 import org.junit.Assert;
 import org.junit.Assert.*;
 import org.junit.Test;

@@ -1,4 +1,6 @@
-package expressionevaluator;
+package expressionevaluator.operations;
+
+import expressionevaluator.Expression;
 
 public abstract class BinaryOperation implements Expression {
     protected final Expression rightExpression;
