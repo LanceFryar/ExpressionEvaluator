@@ -1,7 +1,7 @@
 package expressionevaluator;
 
-public interface Expression {
+public interface Expression <Type> {
 
-    public int calculate();
+    public Type calculate();
     
 }

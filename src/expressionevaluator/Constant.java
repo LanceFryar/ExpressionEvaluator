@@ -1,14 +1,14 @@
 package expressionevaluator;
 
-public class Constant implements Expression {
-    final int value;
+public class Constant <Type> implements Expression {
+    final Type value;
 
-    public Constant (int value) {
+    public Constant (Type value) {
         this.value = value;
     }
 
     @Override
-   public int calculate() {
+   public Type calculate() {
         return value;
     }
     

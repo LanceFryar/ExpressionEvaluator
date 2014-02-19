@@ -9,6 +9,7 @@ public abstract class BinaryOperation implements Expression {
         this.leftExpression = leftExpression;
     }
 
-    public abstract int calculate();
+    @Override
+    public abstract Object calculate();
     
 }

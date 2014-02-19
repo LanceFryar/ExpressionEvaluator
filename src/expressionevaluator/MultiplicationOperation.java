@@ -7,7 +7,7 @@ public class MultiplicationOperation extends BinaryOperation{
     }
     
     @Override
-    public int calculate() {
+    public Object calculate() {
         return leftExpression.calculate() * rightExpression.calculate();
     }
 }

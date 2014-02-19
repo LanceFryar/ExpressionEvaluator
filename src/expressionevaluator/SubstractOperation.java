@@ -3,14 +3,14 @@ package expressionevaluator;
 import java.awt.Event;
 
 
-class SubstractOperation extends BinaryOperation{
+public class SubstractOperation extends BinaryOperation{
 
     SubstractOperation(Expression leftExpression, Expression rightExpression) {
         super(leftExpression, rightExpression);
     }
 
     @Override
-    public int calculate() {
+    public Object calculate() {
         return leftExpression.calculate() - rightExpression.calculate();
     }
     

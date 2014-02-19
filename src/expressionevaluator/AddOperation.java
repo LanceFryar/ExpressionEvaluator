@@ -7,7 +7,11 @@ public class AddOperation extends BinaryOperation{
     }
 
     @Override
-    public int calculate() {
-        return leftExpression.calculate() + rightExpression.calculate();
+    public Object calculate() {
+        return getOperator(leftExpression.calculate(), leftExpression.calculate()).evaluate();
+    }
+
+    private BinaryOperator getOperator(Object leftValue, Object rightValue) {
+        return new BinaryOperatorFactory().buildAdditionOperator(leftValue, rightValue);
     }
 }
