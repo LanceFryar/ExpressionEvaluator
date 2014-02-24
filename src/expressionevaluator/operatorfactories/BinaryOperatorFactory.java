@@ -1,166 +1,52 @@
 package expressionevaluator.operatorfactories;
 
 import expressionevaluator.operators.BinaryOperator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BinaryOperatorFactory {
-    private final Map<String, BinaryOperator> builders;
     
     public BinaryOperatorFactory() {
-        builders = new HashMap<>();
-        initBuilders();
-    }
-
-    private void initBuilders() {  
-        initAdditionOperators();
-        initSubstractOperators();
-        initDivisionOperators();
-        initMultiplicationOperators();
-    }
-    
-    private void initAdditionOperators(){
-        builders.put("IntegerIntegerAdd", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Integer) left + (Integer) right;
-            }
-        });
-        builders.put("DoubleIntegerAdd", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Double) left + (Integer) right;
-            }
-        });
-        builders.put("IntegerDoubleAdd", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Integer) left + (Double) right;
-            }
-        });
-        builders.put("DoubleDoubleAdd", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Double) left + (Double) right;
-            }
-        });
-    }
-    
-    private void initSubstractOperators() {
-        builders.put("IntegerIntegerSubstract", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Integer) left - (Integer) right;
-            }
-        });        
-        builders.put("DoubleIntegerSubstract", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Double) left - (Integer) right;
-            }
-        });
-        builders.put("IntegerDoubleSubstract", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Integer) left - (Double) right;
-            }
-        });
-        builders.put("DoubleDoubleSubstract", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Double) left - (Double) right;
-            }
-        });
-    }
-
-    private void initDivisionOperators() {
-        builders.put("IntegerIntegerDivision", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Integer) left / (Integer) right;
-            }
-        });
-        builders.put("DoubleIntegerDivision", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Double) left / (Integer) right;
-            }
-        });
-        builders.put("IntegerDoubleDivision", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Integer) left / (Double) right;
-            }
-        });
-        builders.put("DoubleDoubleDivision", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Double) left / (Double) right;
-            }
-        });
-    }
-
-    private void initMultiplicationOperators() {
-        builders.put("IntegerIntegerMultiplication", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Integer) left * (Integer) right;
-            }
-        });
-        builders.put("DoubleIntegerMultiplication", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Double) left * (Integer) right;
-            }
-        });
-        builders.put("IntegerDoubleMultiplication", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Integer) left * (Double) right;
-            }
-        });
-        builders.put("DoubleDoubleMultiplication", new BinaryOperator() {
-
-            @Override
-            public Object evaluate(Object left, Object right) {
-                return (Double) left * (Double) right;
-            }
-        });
     }
     
     public BinaryOperator buildAdditionOperator(Object leftValue, Object rightValue) {
-        return builders.get(getSignature(leftValue, rightValue) + "Add");
+        try {
+            return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Add").newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(BinaryOperatorFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     public BinaryOperator buildSubstractOperator(Object leftValue, Object rightValue) {
-        return builders.get(getSignature(leftValue, rightValue) + "Substract");
+        try {
+            return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Substract").newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(BinaryOperatorFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     public BinaryOperator buildMultiplictionOperator(Object leftValue, Object rightValue) {
-        return builders.get(getSignature(leftValue, rightValue) + "Multiplication");
+        try {
+            return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Multiplication").newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(BinaryOperatorFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     public BinaryOperator buildDivisionOperator(Object leftValue, Object rightValue) {
-        return builders.get(getSignature(leftValue, rightValue) + "Division");
+        try {
+            return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Division").newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(BinaryOperatorFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     private String getSignature(Object leftValue, Object rightValue) {
-        return leftValue.getClass().getSimpleName() 
+        return "expressionevaluator.operators."+ leftValue.getClass().getSimpleName() 
                 + rightValue.getClass().getSimpleName();
     }
 
