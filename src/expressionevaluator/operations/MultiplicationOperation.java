@@ -1,7 +1,7 @@
 package expressionevaluator.operations;
 
-import expressionevaluator.BinaryOperator;
-import expressionevaluator.BinaryOperatorFactory;
+import expressionevaluator.operators.BinaryOperator;
+import expressionevaluator.operatorfactories.BinaryOperatorFactory;
 import expressionevaluator.Expression;
 
 public class MultiplicationOperation extends BinaryOperation{

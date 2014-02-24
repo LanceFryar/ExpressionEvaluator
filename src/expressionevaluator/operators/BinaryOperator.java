@@ -1,4 +1,4 @@
-package expressionevaluator;
+package expressionevaluator.operators;
 
 public abstract class BinaryOperator {
     

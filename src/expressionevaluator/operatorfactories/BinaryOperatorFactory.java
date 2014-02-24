@@ -1,5 +1,6 @@
-package expressionevaluator;
+package expressionevaluator.operatorfactories;
 
+import expressionevaluator.operators.BinaryOperator;
 import java.util.HashMap;
 import java.util.Map;
 
