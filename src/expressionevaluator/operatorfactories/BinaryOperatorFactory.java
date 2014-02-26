@@ -10,6 +10,10 @@ public class BinaryOperatorFactory {
     }
     
     public BinaryOperator buildAdditionOperator(Object leftValue, Object rightValue) {
+        return createAdditionOperator(leftValue, rightValue);
+    }
+
+    private BinaryOperator createAdditionOperator(Object leftValue, Object rightValue) {
         try {
             return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Add").newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
@@ -19,6 +23,10 @@ public class BinaryOperatorFactory {
     }
     
     public BinaryOperator buildSubstractOperator(Object leftValue, Object rightValue) {
+        return createSubstractOperator(leftValue, rightValue);
+    }
+
+    private BinaryOperator createSubstractOperator(Object leftValue, Object rightValue) {
         try {
             return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Substract").newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
@@ -28,6 +36,11 @@ public class BinaryOperatorFactory {
     }
     
     public BinaryOperator buildMultiplictionOperator(Object leftValue, Object rightValue) {
+        return createMultiplicationOperator(leftValue, rightValue);
+        
+    }
+
+    private BinaryOperator createMultiplicationOperator(Object leftValue, Object rightValue) {
         try {
             return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Multiplication").newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
@@ -37,6 +50,10 @@ public class BinaryOperatorFactory {
     }
     
     public BinaryOperator buildDivisionOperator(Object leftValue, Object rightValue) {
+        return createDivisionOperator(leftValue, rightValue);
+    }
+
+    private BinaryOperator createDivisionOperator(Object leftValue, Object rightValue) {
         try {
             return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Division").newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
