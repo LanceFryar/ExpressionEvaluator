@@ -1,4 +1,4 @@
-package expressionevaluator.operators;
+package expressionevaluator.operators.division;
 
 import expressionevaluator.operators.BinaryOperator;
 
