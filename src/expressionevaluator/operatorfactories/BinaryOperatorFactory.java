@@ -9,49 +9,18 @@ public class BinaryOperatorFactory {
     public BinaryOperatorFactory() {
     }
     
-    public BinaryOperator buildAdditionOperator(Object leftValue, Object rightValue) {
+    public BinaryOperator buildOperator(Object leftValue, Object rightValue, String operator) {
         try {
-            return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Add").newInstance();
+            return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue, operator) + operator).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(BinaryOperatorFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
     
-    public BinaryOperator buildSubstractOperator(Object leftValue, Object rightValue) {
-        try {
-            return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Substract").newInstance();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(BinaryOperatorFactory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    public BinaryOperator buildMultiplictionOperator(Object leftValue, Object rightValue) {
-        try {
-            return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Multiplication").newInstance();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(BinaryOperatorFactory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    public BinaryOperator buildDivisionOperator(Object leftValue, Object rightValue) {
-        try {
-            return (BinaryOperator) Class.forName(getSignature(leftValue, rightValue) + "Division").newInstance();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(BinaryOperatorFactory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
-    private String getSignature(Object leftValue, Object rightValue) {
-        return "expressionevaluator.operators."+ leftValue.getClass().getSimpleName() 
+    private String getSignature(Object leftValue, Object rightValue, String operator) {
+        return "expressionevaluator.operators." + operator.toLowerCase() + "."
+                + leftValue.getClass().getSimpleName() 
                 + rightValue.getClass().getSimpleName();
     }
-
-
-    
-    
-
 }
