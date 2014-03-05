@@ -19,7 +19,7 @@ public class BinaryOperatorFactory {
     }
     
     private String getSignature(Object leftValue, Object rightValue, String operator) {
-        return "expressionevaluator.operators." + operator.toLowerCase() + "."
+        return "expressionevaluator.operators." + operator.toLowerCase() + ".nkd"
                 + leftValue.getClass().getSimpleName() 
                 + rightValue.getClass().getSimpleName();
     }
